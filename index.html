@@ -1,19 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sample</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Language Translator | HUMAN ERROR</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1d2b64, #f8cdda);
+      color: #fff;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .dark-mode {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #ddd;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-top: 1rem;
+    }
+    .subtitle {
+      color: #eee;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
+    input, select, button {
+      padding: 12px;
+      margin: 8px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      outline: none;
+    }
+    input {
+      width: 80%;
+      max-width: 500px;
+    }
+    select {
+      background: #2ecc71;
+      color: #fff;
+      cursor: pointer;
+    }
+    button {
+      background: #27ae60;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1abc9c;
+    }
+    .output {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      background: rgba(255,255,255,0.1);
+      padding: 10px 15px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      word-wrap: break-word;
+    }
+    .toggle-btn {
+      background: #555;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      z-index: 99;
+    }
+    .toggle-btn:hover {
+      background: #777;
+    }
+    
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            Home
-            About
-            Contact Us
-        </nav>
-    </header>
-    
+  <h1>🌐Language Translator</h1>
+  <p class="subtitle">❤️ HUMAN ERROR</p>
+
+  <input type="text" id="englishInput" placeholder="Enter English sentence" size="40"/><br>
+
+  <select id="languageSelect">
+    <option value="fr">🇫🇷 French</option>
+
+    <option value="de">🇩🇪 German</option>
+    <option value="hi">🇮🇳 Hindi</option>
+  </select>
+  <button onclick="translateText()">Translate</button>
+  <button onclick="speakTranslation()">🔊 Speak</button>
+
+  <div class="output" id="outputText"></div>
+
+  <footer style="margin-top: 17rem; color: hsl(0, 19%, 94%);">🔸 Created by HUMAN</footer>
+
+  <script>
+    let translatedText = "";
+
+    function translateText() {
+      const input = document.getElementById("englishInput").value.trim();
+      const lang = document.getElementById("languageSelect").value;
+      if (!input) {
+        alert("Please enter an English sentence.");
+        return;
+      }
+
+      fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(input)}&langpair=en|${lang}`)
+        .then(res => res.json())
+        .then(data => {
+          translatedText = data.responseData.translatedText;
+          document.getElementById("outputText").innerHTML = `🔤 <b>Translation:</b> ${translatedText}`;
+        })
+        .catch(err => {
+          console.error(err);
+          alert("Translation failed.");
+        });
+    }
+
+    function speakTranslation() {
+      if (!translatedText) {
+        alert("Please translate text first.");
+        return;
+      }
+      const lang = document.getElementById("languageSelect").value;
+
+      const utterance = new SpeechSynthesisUtterance(translatedText);
+
+      const langMap = {
+        fr: "fr-FR",
+        
+        de: "de-DE",
+        hi: "hi-IN"
+      };
+
+      utterance.lang = langMap[lang] || 'en-US';
+
+      // Special handling for Japanese voice → Prefer "Google 日本語" or fallback
+      const voices = window.speechSynthesis.getVoices();
+      const preferredVoice = voices.find(v => v.lang === utterance.lang);
+      if (preferredVoice) utterance.voice = preferredVoice;
+
+      speechSynthesis.speak(utterance);
+    }
+
+    // Fix for some browsers where voices are loaded asynchronously
+    window.speechSynthesis.onvoiceschanged = () => { speechSynthesis.getVoices(); };
+  </script>
 </body>
 </html>
