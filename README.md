@@ -34,8 +34,7 @@ This project is a **modified version inspired by my faculty, Jagadeesh Sir**. I 
 
 ## 🙏 Acknowledgements
 
-- **Faculty Inspiration**: *Jagadeesh Sir* for the original idea and constant guidance.
-
+- **Faculty Inspiration**: *Jagadeesh Sir* for the original idea.
 ## 📬 Feedback
 
 Feel free to suggest improvements or report issues. I’m open to collaboration and learning!
