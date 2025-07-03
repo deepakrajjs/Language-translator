@@ -10,7 +10,7 @@ This project is a **modified version inspired by my faculty, Jagadeesh Sir**. I 
 
 - Translate text between multiple languages
 - Clean and responsive user interface
-- Simple and intuitive usage
+- Simple and intuitive usage.
 - Built using modern web technologies
 
 ## 🛠️ Technologies Used
