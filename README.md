@@ -4,7 +4,7 @@ Welcome to my **Language Translator** project! This web-based application allows
 
 ## ✨ About the Project.... 
 
-This project is a **modified version inspired by my faculty, Jagadeesh Sir**. I worked on enhancing the design and making the translation experience more user-friendly. Built entirely with **HTML, CSS, and JavaScript**, it demonstrates my growing skills in frontend development.
+This project is a **modified version inspired by my faculty, Jagadeesh Sir**. I worked on enhancing the design and making the translation experience more user-friendly. Built entirely with **HTML, CSS, and JavaScript**, it demonstrates my growing skills in frontend development. 
 
 ## 🚀 Features...
 - Translate text between multiple languages
