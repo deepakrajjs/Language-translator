@@ -1,6 +1,6 @@
 # 🌐 Language Translator....
 
-Welcome to my **Language Translator** project! This web-based application allows users to translate text into multiple languages with a clean and simple interface.
+Welcome to my **Language Translator** project! This web-based application allows users to translate text into multiple languages with a clean and simple interface. 
 
 ## ✨ About the Project.... 
 
