@@ -1,7 +1,7 @@
 # 🌐 Language Translator
 
 ![Animated Banner](https://media.giphy.com/media/26gsspfM0E8h9u1hy/giphy.gif)
-
+            
 Welcome to my **Language Translator** project! This web-based app lets you translate text into multiple languages with a clean and animated interface.
 
 ---
