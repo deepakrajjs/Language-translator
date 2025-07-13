@@ -1,4 +1,4 @@
-# 🌐 Language Translator
+ # 🌐 Language Translator
 
 ![Animated Banner](https://media.giphy.com/media/26gsspfM0E8h9u1hy/giphy.gif)
             
